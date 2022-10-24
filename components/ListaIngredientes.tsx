@@ -4,7 +4,7 @@ import AreaBranca from "./AreaBranca";
 
 function ListaIngredientes() {
   return (
-    <AreaBranca children={undefined} className={undefined}>
+    <AreaBranca>
       <h3>Ingredientes:</h3>
       <ul>
         <li>2 xíc. de chá de farinha de trigo</li>

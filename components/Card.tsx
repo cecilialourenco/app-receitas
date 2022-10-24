@@ -1,11 +1,10 @@
-import Image from "next/image";
-
+/* eslint-disable @next/next/no-img-element */
 function Card({ title, cover }) {
   return (
     <div className="col">
       <a href="#">
         <div className="card h-100">
-          <Image
+          <img
             src={cover}
             className="card-img-top"
             alt=""
