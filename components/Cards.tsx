@@ -14,13 +14,7 @@ function Cards() {
     return (
       <>
         <Button variant="warning" disabled>
-          <Spinner
-            as="span"
-            animation="grow"
-            size="lg"
-            role="status"
-            aria-hidden="true"
-          />
+          <Spinner animation={"border"} />
           Loading...
         </Button>
       </>
