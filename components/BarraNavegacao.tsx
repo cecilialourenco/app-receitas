@@ -2,12 +2,10 @@ import {
   Button,
   Container,
   Form,
-  Image,
   Nav,
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import novalogo from "../public/o-que-tem-pra-comer-high-resolution-logo-color-on-transparent-background.png";
 
 function BarraNavegacao() {
   return (
@@ -18,7 +16,12 @@ function BarraNavegacao() {
     >
       <Container fluid>
         <Navbar.Brand href="/">
-          <Image {...novalogo} alt="logo" width={200} height={100} />
+          <img
+            src="/o-que-tem-pra-comer-high-resolution-logo-color-on-transparent-background.png"
+            alt="logo"
+            width={200}
+            height={100}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
