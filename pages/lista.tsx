@@ -10,7 +10,6 @@ function Lista() {
         <Col>
           <Aba />
           <BarraNavegacao />
-          <h1>Minhas Receitas</h1>
           <Cards />
         </Col>
       </Row>

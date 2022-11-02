@@ -7,7 +7,7 @@ type Props = {
 function Card({ title, cover }: Props) {
   return (
     <div className="col">
-      <a href="#">
+      <a href="#" style={{ textDecoration: "none" }}>
         <div className="card h-100">
           <img
             src={cover}
@@ -17,7 +17,9 @@ function Card({ title, cover }: Props) {
             height={250}
           />
           <div className="card-body">
-            <h5 className="card-title text-center">{title}</h5>
+            <h5 className="card-title text-center" style={{ color: "#EC9131" }}>
+              {title}
+            </h5>
           </div>
         </div>
       </a>

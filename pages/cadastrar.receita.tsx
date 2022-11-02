@@ -19,8 +19,6 @@ function CadastrarReceita() {
           <BarraNavegacao />
           <div>
             <main>
-              <h1>Nova Receita</h1>
-
               <Form className="g-3">
                 <Form.Group className="mb-3" controlId="title">
                   <FormControl
@@ -63,7 +61,11 @@ function CadastrarReceita() {
                     </Form.Select>
                   </Form.Group>
                 </Row>
-                <Button variant="warning" type="submit" className="mb-3">
+                <Button
+                  style={{ background: "#98D3DF" }}
+                  type="submit"
+                  className="mb-3"
+                >
                   Adicionar
                 </Button>
 
@@ -75,7 +77,7 @@ function CadastrarReceita() {
                   />
                 </Form.Group>
 
-                <Button variant="warning" type="submit">
+                <Button style={{ background: "#98D3DF" }} type="submit">
                   Cadastrar
                 </Button>
               </Form>
