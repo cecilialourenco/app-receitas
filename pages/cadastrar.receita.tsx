@@ -22,12 +22,12 @@ function CadastrarReceita() {
               <h1>Nova Receita</h1>
 
               <Form className="g-3">
-                <InputGroup className="mb-3" controlId="title">
+                <Form.Group className="mb-3" controlId="title">
                   <FormControl
                     type="text"
                     placeholder="Digite o título da receita"
                   />
-                </InputGroup>
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
