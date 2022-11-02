@@ -1,14 +1,15 @@
-import { Image } from "react-bootstrap";
 import AreaBranca from "./AreaBranca";
 
-function TituloImagem() {
+type Props = {
+  cover: string;
+  title: string;
+};
+function TituloImagem({ title, cover }: Props) {
   return (
-    <>
-      <AreaBranca className="text-center">
-        <h2>Bolo Simples</h2>
-        <Image src="/bolo.png" alt="bolo" width={400} height={300} />
-      </AreaBranca>
-    </>
+    <AreaBranca className="text-center">
+      <h2>{title}</h2>
+      <img src={cover} width={400} height={300} />
+    </AreaBranca>
   );
 }
 export default TituloImagem;

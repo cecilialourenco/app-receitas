@@ -1,20 +1,41 @@
 /* eslint-disable react/no-children-prop */
+import { collection } from "firebase/firestore";
 import { Children } from "react";
+import { Button, Spinner } from "react-bootstrap";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../lib/firebase";
 import AreaBranca from "./AreaBranca";
 
-function ListaIngredientes() {
+type Props = {
+  recipeId: string;
+};
+function ListaIngredientes({ recipeId }: Props) {
+  const [ingredients, ingredientsLoading, ingredientsError] = useCollection(
+    collection(db, "Recipes", recipeId, "Ingredients"),
+    {}
+  );
+  if (ingredientsLoading) {
+    return (
+      <>
+        <Button variant="warning" disabled>
+          <Spinner animation={"border"} />
+          Loading...
+        </Button>
+      </>
+    );
+  }
+  const ingredientList = ingredients.docs.map((ingredient) => {
+    const data = ingredient.data();
+    return (
+      <li key={ingredient.id}>
+        {data.quantity} {data.measure} de {data.name}
+      </li>
+    );
+  });
   return (
     <AreaBranca>
       <h3>Ingredientes:</h3>
-      <ul>
-        <li>2 xíc. de chá de farinha de trigo</li>
-        <li>1 e 1/2 xíc. de chá de açúcar</li>
-        <li>1 xíc de chá de leite</li>
-        <li>1 xíc. de chá de óleo</li>
-        <li>3 ovos</li>
-        <li>1 col. de sopa de fermento</li>
-        <li>1 col. de chá de essência de baunilha</li>
-      </ul>
+      <ul>{ingredientList}</ul>
     </AreaBranca>
   );
 }
