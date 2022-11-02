@@ -24,7 +24,7 @@ function ListaIngredientes({ recipeId }: Props) {
       </>
     );
   }
-  const ingredientList = ingredients.docs.map((ingredient) => {
+  const ingredientList = ingredients?.docs.map((ingredient) => {
     const data = ingredient.data();
     return (
       <li key={ingredient.id}>
