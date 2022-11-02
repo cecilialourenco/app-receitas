@@ -2,7 +2,7 @@ import AreaBranca from "./AreaBranca";
 
 function ModoPreparo() {
   return (
-    <AreaBranca children={undefined} className={undefined}>
+    <AreaBranca>
       <h3>Modo de Preparo:</h3>
       <p>
         Pré-aqueça o forno à temperatura de 180 graus. Peneire a farinha em uma
