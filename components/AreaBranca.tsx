@@ -1,4 +1,9 @@
-function AreaBranca({ children, className }) {
+type Props = {
+  children: JSX.Element[];
+  className?: string;
+};
+
+function AreaBranca({ children, className }: Props) {
   return (
     <div
       className={`p-3 my-3 rounded ${className}`}

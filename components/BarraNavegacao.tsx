@@ -7,19 +7,18 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import cookBook from "../public/cook-book.png";
+import novalogo from "../public/o-que-tem-pra-comer-high-resolution-logo-color-on-transparent-background.png";
 
-function BarraNavegacao(className: any) {
+function BarraNavegacao() {
   return (
     <Navbar
-      className={`mb-3 rounded ${className}`}
-      style={{ background: "white" }}
+      className="mb-3 rounded"
+      style={{ background: "#fcbc04" }}
       expand="lg"
     >
       <Container fluid>
-        <Navbar.Brand href="#">
-          <Image {...cookBook} alt="logo" width={40} height={30} />O que tem pra
-          comer?
+        <Navbar.Brand href="/">
+          <Image {...novalogo} alt="logo" width={200} height={100} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -28,25 +27,23 @@ function BarraNavegacao(className: any) {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Login</Nav.Link>
             <NavDropdown title="Receitas" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">
-                Minhas Receitas
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item href="/lista">Minhas Receitas</NavDropdown.Item>
+              <NavDropdown.Item href="/cadastrar.receita">
                 Cadastrar Nova Receita
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
+
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="O que procura?"
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button style={{ background: "#a0bdcf" }}>Pesquisar</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

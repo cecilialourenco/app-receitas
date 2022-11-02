@@ -2,6 +2,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import Card from "./Card";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { Button, Spinner } from "react-bootstrap";
 
 function Cards() {
   const [recipes, recipesLoading, recipesError] = useCollection(
@@ -10,7 +11,20 @@ function Cards() {
   );
   let cardList;
   if (recipesLoading) {
-    return <p>Loading</p>;
+    return (
+      <>
+        <Button variant="warning" disabled>
+          <Spinner
+            as="span"
+            animation="grow"
+            size="lg"
+            role="status"
+            aria-hidden="true"
+          />
+          Loading...
+        </Button>
+      </>
+    );
   }
   if (recipes) {
     cardList = recipes.docs.map((doc) => {

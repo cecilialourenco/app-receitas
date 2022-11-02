@@ -1,5 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-function Card({ title, cover }) {
+type Props = {
+  title: string;
+  cover: string;
+};
+
+function Card({ title, cover }: Props) {
   return (
     <div className="col">
       <a href="#">
@@ -8,8 +13,8 @@ function Card({ title, cover }) {
             src={cover}
             className="card-img-top"
             alt=""
-            width={400}
-            height={300}
+            width={100}
+            height={250}
           />
           <div className="card-body">
             <h5 className="card-title text-center">{title}</h5>
