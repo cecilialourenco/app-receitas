@@ -23,7 +23,7 @@ function Receita() {
         <Col>
           <Aba />
           <BarraNavegacao />
-          {recipe && (
+          {data && recipe && (
             <Recipe
               title={data.title}
               cover={data.cover}
