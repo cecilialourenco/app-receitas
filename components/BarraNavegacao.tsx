@@ -31,7 +31,6 @@ function BarraNavegacao() {
       <nav
         className="nav nav-pills nav-fill mb-4"
         style={{ background: "#EC9131" }}
-        // expand="lg"
       >
         <NavLink href="/lista">Minhas Receitas</NavLink>
         <NavLink href="/cadastrar.receita">Cadastrar Receita</NavLink>
