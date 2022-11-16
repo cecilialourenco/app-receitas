@@ -13,9 +13,6 @@ function PlanejamentoSemanal() {
         <Col>
           <Aba />
           <BarraNavegacao />
-          <div>
-            <Calendar onChange={onChange} value={value} />
-          </div>
         </Col>
       </Row>
     </Container>
