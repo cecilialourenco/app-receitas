@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Button,
   Col,
@@ -15,10 +15,27 @@ import BarraNavegacao from "../components/BarraNavegacao";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";
 import { useDropzone } from "react-dropzone";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../lib/firebase";
+
+type Ingredient = {
+  id?: string;
+  name: string;
+  quantity?: number;
+  measure: string;
+};
+type FormData = {
+  title: string;
+  category: string;
+  // cover: File;
+  ingredients: Ingredient[];
+  instructions: string;
+};
 
 function CadastrarReceita() {
   const formRef = useRef<HTMLFormElement | null>(null);
-  const { register, control } = useForm();
+  const { register, control, handleSubmit } = useForm<FormData>();
+  const [cover, setCover] = useState<any>([]);
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -27,17 +44,34 @@ function CadastrarReceita() {
   if (fields.length === 0) {
     append({
       name: "",
-      quantity: "",
+      quantity: undefined,
       measure: "",
     });
   }
 
-  function DropzoneWithoutDrag(_props: any) {
-    const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
-      noDrag: true,
+  const convertBase64 = (file: Blob) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
     });
-    if (acceptedFiles.length > 0) {
-      const url = URL.createObjectURL(acceptedFiles[0]);
+  };
+
+  function DropzoneWithoutDrag(_props: any) {
+    const { getRootProps, getInputProps } = useDropzone({
+      noDrag: true,
+      multiple: false,
+      onDrop: (file) => setCover(file),
+    });
+    if (cover.length > 0) {
+      const url = URL.createObjectURL(cover[0]);
       return (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -75,14 +109,11 @@ function CadastrarReceita() {
     );
   }
 
-  function handleFormSubmit() {
-    if (!formRef.current) {
-      return false;
-    }
-    const formData = Object.fromEntries(
-      new FormData(formRef.current).entries()
-    );
-    console.log(formData);
+  async function handleFormSubmit(recipeData: FormData) {
+    const imageData = await convertBase64(cover[0]);
+    const newRecipe = { ...recipeData, cover: imageData };
+    console.log(newRecipe);
+    addDoc(collection(db, "Recipes"), newRecipe);
   }
   return (
     <Container>
@@ -97,7 +128,7 @@ function CadastrarReceita() {
                   <FormControl
                     type="text"
                     placeholder="Digite o título da receita"
-                    name="title"
+                    {...register(`title` as const)}
                   />
                 </Form.Group>
 
@@ -105,7 +136,7 @@ function CadastrarReceita() {
                   <Form.Control
                     type="text"
                     placeholder="Digite a categoria (Exemplos: dieta, final de semana, lanche, sobremesa...)"
-                    name="category"
+                    {...register(`category` as const)}
                   />
                 </Form.Group>
                 <div className="mb-3 p-2 text-center">
@@ -123,19 +154,23 @@ function CadastrarReceita() {
                           placeholder="Digite o nome do ingrediente"
                           defaultValue={ingredient.name}
                           className="me-5 p-2 w-75"
-                          {...register(`ingredients.${index}.name`)}
+                          {...register(`ingredients.${index}.name` as const)}
                         />
                         <InputGroup>
                           <Form.Control
                             placeholder="quantidade"
                             defaultValue={ingredient.quantity}
                             className="text-center"
-                            {...register(`ingredients.${index}.quantity`)}
+                            {...register(
+                              `ingredients.${index}.quantity` as const
+                            )}
                           />
                           <Form.Select
                             aria-label="Default select example"
                             defaultValue={ingredient.measure}
-                            {...register(`ingredients.${index}.measure`)}
+                            {...register(
+                              `ingredients.${index}.measure` as const
+                            )}
                           >
                             <option selected>Escolha a medida</option>
                             <option value={"xícara"}>xícara de chá</option>
@@ -143,7 +178,7 @@ function CadastrarReceita() {
                               colher de sopa
                             </option>
                             <option value={"colher de sobremesa"}>
-                              colher de sopa
+                              colher de sobremesa
                             </option>
                             <option value={"colher de chá"}>
                               colher de chá
@@ -174,7 +209,7 @@ function CadastrarReceita() {
                     style={{ background: "#98D3DF" }}
                     className="mb-3"
                     onClick={() =>
-                      append({ quantity: null, name: null, measure: null })
+                      append({ quantity: undefined, name: "", measure: "" })
                     }
                   >
                     Adicionar ingrediente
@@ -186,13 +221,13 @@ function CadastrarReceita() {
                     as="textarea"
                     rows={5}
                     placeholder="Modo de preparo"
-                    name="instructions"
+                    {...register(`instructions` as const)}
                   />
                 </Form.Group>
 
                 <Button
                   style={{ background: "#98D3DF" }}
-                  onClick={handleFormSubmit}
+                  onClick={handleSubmit(handleFormSubmit)}
                 >
                   Cadastrar
                 </Button>

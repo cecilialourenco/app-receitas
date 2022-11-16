@@ -29,6 +29,7 @@ function Receita() {
               cover={data.cover}
               id={recipe.id}
               instructions={data.instructions}
+              ingredients={data.ingredients}
             />
           )}
         </Col>
