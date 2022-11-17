@@ -4,28 +4,29 @@ import NavLink from "./NavLink";
 function BarraNavegacao() {
   return (
     <>
-      <Navbar style={{ background: "white" }} expand="lg">
+      <Navbar
+        style={{ background: "white" }}
+        className="d-flex justify-content-around"
+      >
         <Container fluid>
           <Navbar.Brand href="/">
             <img
               src="/comida-pra-semana-high-resolution-logo-color-on-transparent-background.png"
               alt="logo"
-              width={250}
+              width={300}
               height={100}
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="O que procura?"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button style={{ background: "#98D3DF" }}>Pesquisar</Button>
-            </Form>
-          </Navbar.Collapse>
+
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Digite o que você procura:"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button style={{ background: "#98D3DF" }}>Pesquisar</Button>
+          </Form>
         </Container>
       </Navbar>
       <nav
