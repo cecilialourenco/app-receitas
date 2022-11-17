@@ -73,13 +73,15 @@ function CadastrarReceita() {
     if (cover.length > 0) {
       const url = URL.createObjectURL(cover[0]);
       return (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={url}
-          style={{
-            height: "400px",
-          }}
-        />
+        <>
+          <img
+            src={url}
+            style={{
+              height: "400px",
+            }}
+          />
+          <button onClick={() => setCover(false)}>Excluir</button>
+        </>
       );
     }
 
@@ -158,12 +160,13 @@ function CadastrarReceita() {
                         />
                         <InputGroup>
                           <Form.Control
-                            placeholder="quantidade"
+                            placeholder="Quantidade"
                             defaultValue={ingredient.quantity}
                             className="text-center"
                             {...register(
                               `ingredients.${index}.quantity` as const
                             )}
+                            style={{ width: "10px" }}
                           />
                           <Form.Select
                             aria-label="Default select example"
@@ -172,7 +175,7 @@ function CadastrarReceita() {
                               `ingredients.${index}.measure` as const
                             )}
                           >
-                            <option selected>Escolha a medida</option>
+                            <option value="">Escolha a medida</option>
                             <option value={"xícara"}>xícara de chá</option>
                             <option value={"colher de sopa"}>
                               colher de sopa
