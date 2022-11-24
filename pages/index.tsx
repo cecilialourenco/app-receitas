@@ -1,18 +1,11 @@
-import { NextPage } from "next";
-import { Col, Container, Row } from "react-bootstrap";
-import Aba from "../components/Aba";
-import BarraNavegacao from "../components/BarraNavegacao";
+/* eslint-disable react/no-children-prop */
+import Layout from "../components/Layout";
 
 function Home() {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Aba />
-          <BarraNavegacao />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Layout children={[]} />
+    </>
   );
 }
 

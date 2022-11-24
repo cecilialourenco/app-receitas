@@ -1,10 +1,9 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable react/jsx-key */
 import { doc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { Col, Container, Row } from "react-bootstrap";
 import { useDocument } from "react-firebase-hooks/firestore";
-import Aba from "../../components/Aba";
-import BarraNavegacao from "../../components/BarraNavegacao";
+import Layout from "../../components/Layout";
 import Recipe from "../../components/Recipe";
 import { db } from "../../lib/firebase";
 
@@ -26,23 +25,18 @@ function Receita() {
     console.log(data);
   }
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Aba />
-          <BarraNavegacao />
-          {data && recipe && (
-            <Recipe
-              title={data.title}
-              cover={data.cover}
-              id={recipe.id}
-              instructions={data.instructions}
-              ingredients={data.ingredients}
-            />
-          )}
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Layout children={[]} />
+      {data && recipe && (
+        <Recipe
+          title={data.title}
+          cover={data.cover}
+          id={recipe.id}
+          instructions={data.instructions}
+          ingredients={data.ingredients}
+        />
+      )}
+    </>
   );
 }
 

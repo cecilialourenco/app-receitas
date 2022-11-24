@@ -1,8 +1,7 @@
+/* eslint-disable react/no-children-prop */
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import Aba from "../components/Aba";
-import BarraNavegacao from "../components/BarraNavegacao";
+import { useState } from "react";
+import Layout from "../components/Layout";
 
 function Signin() {
   const [displayName, setDisplayName] = useState("");
@@ -29,163 +28,158 @@ function Signin() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Aba />
-          <BarraNavegacao />
-          <div style={{ textAlign: "center" }}>
-            <h1 style={{ color: "#67A438" }}>Cadastre-se</h1>
-            <p style={{ color: "#aaa" }}>
-              Crie seu usuário e comece a guardar suas receitas
-            </p>
-            <form
-              onSubmit={handleSubmit}
-              style={{ maxWidth: "50%", margin: "0 auto" }}
+    <>
+      <Layout children={[]} />
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ color: "#67A438" }}>Cadastre-se</h1>
+        <p style={{ color: "#aaa" }}>
+          Crie seu usuário e comece a guardar suas receitas
+        </p>
+        <form
+          onSubmit={handleSubmit}
+          style={{ maxWidth: "50%", margin: "0 auto" }}
+        >
+          <label
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1em",
+            }}
+          >
+            <span
+              style={{
+                marginBottom: "0.3em",
+                fontWeight: "bold",
+                textAlign: "left",
+                color: "#000",
+              }}
             >
-              <label
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  marginBottom: "1em",
-                }}
-              >
-                <span
-                  style={{
-                    marginBottom: "0.3em",
-                    fontWeight: "bold",
-                    textAlign: "left",
-                    color: "#000",
-                  }}
-                >
-                  Nome:
-                </span>
-                <input
-                  type="text"
-                  name="displayName"
-                  required
-                  placeholder="Nome do usuário"
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                />
-              </label>
-              <label
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  marginBottom: "1em",
-                  color: "#000",
-                }}
-              >
-                <span
-                  style={{
-                    marginBottom: "0.3em",
-                    fontWeight: "bold",
-                    textAlign: "left",
-                  }}
-                >
-                  E-mail:
-                </span>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="E-mail do usuário"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </label>
-              <label
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  marginBottom: "1em",
-                  color: "#000",
-                }}
-              >
-                <span
-                  style={{
-                    marginBottom: "0.3em",
-                    fontWeight: "bold",
-                    textAlign: "left",
-                  }}
-                >
-                  Senha:
-                </span>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  placeholder="Insira sua senha"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-              <label
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  marginBottom: "1em",
-                  color: "#000",
-                }}
-              >
-                <span
-                  style={{
-                    marginBottom: "0.3em",
-                    fontWeight: "bold",
-                    textAlign: "left",
-                  }}
-                >
-                  Confirmação de senha:
-                </span>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  required
-                  placeholder="Confirme a sua senha"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </label>
-              <button
-                style={{
-                  backgroundColor: "#67A438",
-                  color: "#fff",
-                  textAlign: "center",
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                  width: "120px",
-                  fontWeight: "bold",
-                  border: "none",
-                  padding: "10px 15px",
-                  fontSize: "1em",
-                  marginBottom: "1em",
-                }}
-              >
-                Cadastrar
-              </button>
-              {"  "}
-              <Link href="/signin">
-                <a>Já possui uma conta? Entre</a>
-              </Link>
-              {error && (
-                <p
-                  style={{
-                    color: "#721c24",
-                    backgroundColor: "#f8d7da",
-                    border: "1px solid #f5c6cb",
-                    padding: "5px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  {error}
-                </p>
-              )}
-            </form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+              Nome:
+            </span>
+            <input
+              type="text"
+              name="displayName"
+              required
+              placeholder="Nome do usuário"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
+          </label>
+          <label
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1em",
+              color: "#000",
+            }}
+          >
+            <span
+              style={{
+                marginBottom: "0.3em",
+                fontWeight: "bold",
+                textAlign: "left",
+              }}
+            >
+              E-mail:
+            </span>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="E-mail do usuário"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1em",
+              color: "#000",
+            }}
+          >
+            <span
+              style={{
+                marginBottom: "0.3em",
+                fontWeight: "bold",
+                textAlign: "left",
+              }}
+            >
+              Senha:
+            </span>
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="Insira sua senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <label
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1em",
+              color: "#000",
+            }}
+          >
+            <span
+              style={{
+                marginBottom: "0.3em",
+                fontWeight: "bold",
+                textAlign: "left",
+              }}
+            >
+              Confirmação de senha:
+            </span>
+            <input
+              type="password"
+              name="confirmPassword"
+              required
+              placeholder="Confirme a sua senha"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </label>
+          <button
+            style={{
+              backgroundColor: "#67A438",
+              color: "#fff",
+              textAlign: "center",
+              cursor: "pointer",
+              borderRadius: "10px",
+              width: "120px",
+              fontWeight: "bold",
+              border: "none",
+              padding: "10px 15px",
+              fontSize: "1em",
+              marginBottom: "1em",
+            }}
+          >
+            Cadastrar
+          </button>
+          {"  "}
+          <Link href="/signin">
+            <a>Já possui uma conta? Entre</a>
+          </Link>
+          {error && (
+            <p
+              style={{
+                color: "#721c24",
+                backgroundColor: "#f8d7da",
+                border: "1px solid #f5c6cb",
+                padding: "5px",
+                borderRadius: "5px",
+              }}
+            >
+              {error}
+            </p>
+          )}
+        </form>
+      </div>
+    </>
   );
 }
 

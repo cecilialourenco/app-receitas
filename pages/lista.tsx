@@ -1,19 +1,13 @@
-import { Col, Container, Row } from "react-bootstrap";
-import Aba from "../components/Aba";
-import BarraNavegacao from "../components/BarraNavegacao";
+/* eslint-disable react/no-children-prop */
 import Cards from "../components/Cards";
+import Layout from "../components/Layout";
 
 function Lista() {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Aba />
-          <BarraNavegacao />
-          <Cards />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Layout children={[]} />
+      <Cards />
+    </>
   );
 }
 
