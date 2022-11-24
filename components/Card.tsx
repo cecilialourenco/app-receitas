@@ -2,12 +2,13 @@
 type Props = {
   title: string;
   cover: string;
+  id: string;
 };
 
-function Card({ title, cover }: Props) {
+function Card({ title, cover, id }: Props) {
   return (
     <div className="col">
-      <a href="#" style={{ textDecoration: "none" }}>
+      <a href={`/receitas/${id}`} style={{ textDecoration: "none" }}>
         <div className="card h-100">
           <img
             src={cover}
