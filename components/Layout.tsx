@@ -3,12 +3,13 @@ import Aba from "./Aba";
 import BarraNavegacao from "./BarraNavegacao";
 
 type Props = {
-  children: JSX.Element[];
+  children: React.ReactNode;
 };
 
 function Layout({ children }: Props) {
   return (
     <>
+      <BarraNavegacao />
       <Container>
         <Row>
           <Col>
@@ -17,7 +18,6 @@ function Layout({ children }: Props) {
           </Col>
         </Row>
       </Container>
-      <BarraNavegacao />
     </>
   );
 }

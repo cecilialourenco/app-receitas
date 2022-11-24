@@ -5,8 +5,9 @@ import Layout from "../components/Layout";
 function Lista() {
   return (
     <>
-      <Layout children={[]} />
-      <Cards />
+      <Layout>
+        <Cards />
+      </Layout>
     </>
   );
 }

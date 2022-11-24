@@ -26,16 +26,17 @@ function Receita() {
   }
   return (
     <>
-      <Layout children={[]} />
-      {data && recipe && (
-        <Recipe
-          title={data.title}
-          cover={data.cover}
-          id={recipe.id}
-          instructions={data.instructions}
-          ingredients={data.ingredients}
-        />
-      )}
+      <Layout>
+        {data && recipe && (
+          <Recipe
+            title={data.title}
+            cover={data.cover}
+            id={recipe.id}
+            instructions={data.instructions}
+            ingredients={data.ingredients}
+          />
+        )}
+      </Layout>
     </>
   );
 }

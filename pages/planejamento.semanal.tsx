@@ -5,11 +5,7 @@ import Layout from "../components/Layout";
 function PlanejamentoSemanal() {
   const [value, onChange] = useState(new Date());
 
-  return (
-    <>
-      <Layout children={[]} />
-    </>
-  );
+  return <Layout children={undefined}></Layout>;
 }
 
 export default PlanejamentoSemanal;

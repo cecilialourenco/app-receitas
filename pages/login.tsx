@@ -22,87 +22,88 @@ function Login() {
 
   return (
     <>
-      <Layout children={[]} />
-      <div style={{ textAlign: "center" }}>
-        <h1 style={{ color: "#67A438" }}>Faça o seu login</h1>
-        <form
-          onSubmit={handleSubmit}
-          style={{ maxWidth: "50%", margin: "0 auto" }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginBottom: "1em",
-              color: "#000",
-            }}
+      <Layout>
+        <div style={{ textAlign: "center" }}>
+          <h1 style={{ color: "#67A438" }}>Faça o seu login</h1>
+          <form
+            onSubmit={handleSubmit}
+            style={{ maxWidth: "50%", margin: "0 auto" }}
           >
-            <span
+            <label
               style={{
-                marginBottom: "0.3em",
-                fontWeight: "bold",
-                textAlign: "left",
+                display: "flex",
+                flexDirection: "column",
+                marginBottom: "1em",
+                color: "#000",
               }}
             >
-              E-mail:
-            </span>
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="E-mail do usuário"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginBottom: "1em",
-              color: "#000",
-            }}
-          >
-            <span
+              <span
+                style={{
+                  marginBottom: "0.3em",
+                  fontWeight: "bold",
+                  textAlign: "left",
+                }}
+              >
+                E-mail:
+              </span>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="E-mail do usuário"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+            <label
               style={{
-                marginBottom: "0.3em",
-                fontWeight: "bold",
-                textAlign: "left",
+                display: "flex",
+                flexDirection: "column",
+                marginBottom: "1em",
+                color: "#000",
               }}
             >
-              Senha:
-            </span>
-            <input
-              type="password"
-              name="password"
-              required
-              placeholder="Insira sua senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <button
-            style={{
-              backgroundColor: "#67A438",
-              color: "#fff",
-              textAlign: "center",
-              cursor: "pointer",
-              borderRadius: "10px",
-              width: "120px",
-              fontWeight: "bold",
-              border: "none",
-              padding: "10px 15px",
-              fontSize: "1em",
-            }}
-          >
-            Entrar
-          </button>
-          {"  "}
-          <Link href="/signin">
-            <a>Não possui uma conta? Cadastre-se</a>
-          </Link>
-        </form>
-      </div>
+              <span
+                style={{
+                  marginBottom: "0.3em",
+                  fontWeight: "bold",
+                  textAlign: "left",
+                }}
+              >
+                Senha:
+              </span>
+              <input
+                type="password"
+                name="password"
+                required
+                placeholder="Insira sua senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <button
+              style={{
+                backgroundColor: "#67A438",
+                color: "#fff",
+                textAlign: "center",
+                cursor: "pointer",
+                borderRadius: "10px",
+                width: "120px",
+                fontWeight: "bold",
+                border: "none",
+                padding: "10px 15px",
+                fontSize: "1em",
+              }}
+            >
+              Entrar
+            </button>
+            {"  "}
+            <Link href="/signin">
+              <a>Não possui uma conta? Cadastre-se</a>
+            </Link>
+          </form>
+        </div>
+      </Layout>
     </>
   );
 }

@@ -112,113 +112,120 @@ function CadastrarReceita() {
   }
   return (
     <>
-      <Layout children={[]} />
-      <div>
-        <main>
-          <Form className="g-3" ref={formRef}>
-            <Form.Group className="mb-3">
-              <FormControl
-                type="text"
-                placeholder="Digite o título da receita"
-                {...register(`title` as const)}
-              />
-            </Form.Group>
+      <Layout>
+        <div>
+          <main>
+            <Form className="g-3" ref={formRef}>
+              <Form.Group className="mb-3">
+                <FormControl
+                  type="text"
+                  placeholder="Digite o título da receita"
+                  {...register(`title` as const)}
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Control
-                type="text"
-                placeholder="Digite a categoria (Exemplos: dieta, final de semana, lanche, sobremesa...)"
-                {...register(`category` as const)}
-              />
-            </Form.Group>
-            <div className="mb-3 p-2 text-center">
-              <DropzoneWithoutDrag />
-            </div>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="text"
+                  placeholder="Digite a categoria (Exemplos: dieta, final de semana, lanche, sobremesa...)"
+                  {...register(`category` as const)}
+                />
+              </Form.Group>
+              <div className="mb-3 p-2 text-center">
+                <DropzoneWithoutDrag />
+              </div>
 
-            <fieldset
-              className="border bg-white mb-3 p-2 "
-              style={{ borderRadius: "5px" }}
-            >
-              {fields.map((ingredient, index) => {
-                return (
-                  <div
-                    className="d-flex mb-3 justify-content-around"
-                    key={ingredient.id}
-                  >
-                    <Form.Control
-                      placeholder="Digite o nome do ingrediente"
-                      defaultValue={ingredient.name}
-                      className="me-5 p-2 w-75"
-                      {...register(`ingredients.${index}.name` as const)}
-                    />
-                    <InputGroup>
+              <fieldset
+                className="border bg-white mb-3 p-2 "
+                style={{ borderRadius: "5px" }}
+              >
+                {fields.map((ingredient, index) => {
+                  return (
+                    <div
+                      className="d-flex mb-3 justify-content-around"
+                      key={ingredient.id}
+                    >
                       <Form.Control
-                        placeholder="Quantidade"
-                        defaultValue={ingredient.quantity}
-                        className="text-center"
-                        {...register(`ingredients.${index}.quantity` as const)}
+                        placeholder="Digite o nome do ingrediente"
+                        defaultValue={ingredient.name}
+                        className="me-5 p-2 w-75"
+                        {...register(`ingredients.${index}.name` as const)}
                       />
-                      <Form.Select
-                        aria-label="Default select example"
-                        defaultValue={ingredient.measure}
-                        {...register(`ingredients.${index}.measure` as const)}
-                      >
-                        <option value="">Escolha a medida</option>
-                        <option value={"xícara"}>xícara de chá</option>
-                        <option value={"colher de sopa"}>colher de sopa</option>
-                        <option value={"colher de sobremesa"}>
-                          colher de sobremesa
-                        </option>
-                        <option value={"colher de chá"}>colher de chá</option>
-                        <option value={"colher de café"}>colher de café</option>
-                        <option value={"ml"}>mililitros</option>
-                        <option value={"g"}>gramas</option>
-                        <option value={"unidade(s)"}>unidade(s)</option>
-                      </Form.Select>
-                    </InputGroup>
+                      <InputGroup>
+                        <Form.Control
+                          placeholder="Quantidade"
+                          defaultValue={ingredient.quantity}
+                          className="text-center"
+                          {...register(
+                            `ingredients.${index}.quantity` as const
+                          )}
+                        />
+                        <Form.Select
+                          aria-label="Default select example"
+                          defaultValue={ingredient.measure}
+                          {...register(`ingredients.${index}.measure` as const)}
+                        >
+                          <option value="">Escolha a medida</option>
+                          <option value={"xícara"}>xícara de chá</option>
+                          <option value={"colher de sopa"}>
+                            colher de sopa
+                          </option>
+                          <option value={"colher de sobremesa"}>
+                            colher de sobremesa
+                          </option>
+                          <option value={"colher de chá"}>colher de chá</option>
+                          <option value={"colher de café"}>
+                            colher de café
+                          </option>
+                          <option value={"ml"}>mililitros</option>
+                          <option value={"g"}>gramas</option>
+                          <option value={"unidade(s)"}>unidade(s)</option>
+                        </Form.Select>
+                      </InputGroup>
 
-                    <a onClick={() => remove(index)}>
-                      <FaRegTrashAlt
-                        fontSize="1.5rem"
-                        className="ms-2"
-                        style={{
-                          color: "Tomato",
-                        }}
-                      />
-                    </a>
-                  </div>
-                );
-              })}
+                      <a onClick={() => remove(index)}>
+                        <FaRegTrashAlt
+                          fontSize="1.5rem"
+                          className="ms-2"
+                          style={{
+                            color: "Tomato",
+                          }}
+                        />
+                      </a>
+                    </div>
+                  );
+                })}
+
+                <Button
+                  style={{ background: "#98D3DF" }}
+                  className="mb-3"
+                  onClick={() =>
+                    append({ quantity: undefined, name: "", measure: "" })
+                  }
+                >
+                  Adicionar
+                </Button>
+              </fieldset>
+
+              <Form.Group className="mb-3" controlId="instructions">
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  placeholder="Modo de preparo"
+                  {...register(`instructions` as const)}
+                />
+              </Form.Group>
 
               <Button
                 style={{ background: "#98D3DF" }}
-                className="mb-3"
-                onClick={() =>
-                  append({ quantity: undefined, name: "", measure: "" })
-                }
+                onClick={handleSubmit(handleFormSubmit)}
               >
-                Adicionar
+                Cadastrar
               </Button>
-            </fieldset>
-
-            <Form.Group className="mb-3" controlId="instructions">
-              <Form.Control
-                as="textarea"
-                rows={5}
-                placeholder="Modo de preparo"
-                {...register(`instructions` as const)}
-              />
-            </Form.Group>
-
-            <Button
-              style={{ background: "#98D3DF" }}
-              onClick={handleSubmit(handleFormSubmit)}
-            >
-              Cadastrar
-            </Button>
-          </Form>
-        </main>
-      </div>
+            </Form>
+          </main>
+        </div>
+      </Layout>
     </>
   );
 }
