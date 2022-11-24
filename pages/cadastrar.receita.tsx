@@ -93,7 +93,7 @@ function CadastrarReceita() {
             <FiUpload
               style={{
                 fontSize: "30",
-                color: "#FFF",
+                color: "#dcdcdc",
                 width: "100%",
                 height: "150px",
                 marginBottom: "1rem",
@@ -145,7 +145,10 @@ function CadastrarReceita() {
                   <DropzoneWithoutDrag />
                 </div>
 
-                <fieldset className="border border-success mb-3 p-2 ">
+                <fieldset
+                  className="border bg-white mb-3 p-2 "
+                  style={{ borderRadius: "5px" }}
+                >
                   {fields.map((ingredient, index) => {
                     return (
                       <div
@@ -166,7 +169,6 @@ function CadastrarReceita() {
                             {...register(
                               `ingredients.${index}.quantity` as const
                             )}
-                            style={{ width: "10px" }}
                           />
                           <Form.Select
                             aria-label="Default select example"
@@ -215,7 +217,7 @@ function CadastrarReceita() {
                       append({ quantity: undefined, name: "", measure: "" })
                     }
                   >
-                    Adicionar ingrediente
+                    Adicionar
                   </Button>
                 </fieldset>
 
