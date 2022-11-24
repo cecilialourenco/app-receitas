@@ -5,8 +5,11 @@ function BarraNavegacao() {
   return (
     <>
       <Navbar
-        style={{ background: "white" }}
-        className="d-flex justify-content-around"
+        style={{
+          background: "white",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
       >
         <Container fluid>
           <Navbar.Brand href="/">
@@ -18,7 +21,7 @@ function BarraNavegacao() {
             />
           </Navbar.Brand>
 
-          <Form className="d-flex">
+          <Form className="d-flex m-0">
             <Form.Control
               type="search"
               placeholder="Digite o que você procura:"
@@ -36,7 +39,8 @@ function BarraNavegacao() {
         <NavLink href="/lista">Minhas Receitas</NavLink>
         <NavLink href="/cadastrar.receita">Cadastrar Receita</NavLink>
         <NavLink href="/planejamento.semanal">Planejamento Semanal</NavLink>
-        <NavLink href="/login">Login</NavLink>
+        <NavLink href="/login">Entrar</NavLink>
+        <NavLink href="/signin">Cadastrar conta</NavLink>
       </nav>
     </>
   );
