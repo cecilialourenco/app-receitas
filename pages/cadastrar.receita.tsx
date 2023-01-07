@@ -98,7 +98,9 @@ function CadastrarReceita() {
               }}
             />
           </span>
-          <p>Escolha uma foto para a sua receita</p>
+          <p style={{ fontWeight: "bold" }}>
+            Escolha uma foto para a sua receita
+          </p>
         </div>
       </section>
     );
@@ -115,7 +117,19 @@ function CadastrarReceita() {
       <Layout>
         <div>
           <main>
+            <h1
+              style={{
+                color: "#67A438",
+                textAlign: "center",
+              }}
+            >
+              Cadastre sua receita
+            </h1>
+            <p style={{ textAlign: "center", color: "#aaa" }}>
+              E use-a em seu planejamento semanal
+            </p>
             <Form className="g-3" ref={formRef}>
+              <p style={{ fontWeight: "bold" }}>Título</p>
               <Form.Group className="mb-3">
                 <FormControl
                   type="text"
@@ -123,7 +137,7 @@ function CadastrarReceita() {
                   {...register(`title` as const)}
                 />
               </Form.Group>
-
+              <p style={{ fontWeight: "bold" }}>Categoria</p>
               <Form.Group className="mb-3">
                 <Form.Control
                   type="text"
@@ -134,7 +148,7 @@ function CadastrarReceita() {
               <div className="mb-3 p-2 text-center">
                 <DropzoneWithoutDrag />
               </div>
-
+              <p style={{ fontWeight: "bold" }}>Ingredientes</p>
               <fieldset
                 className="border bg-white mb-3 p-2 "
                 style={{ borderRadius: "5px" }}
@@ -196,32 +210,54 @@ function CadastrarReceita() {
                   );
                 })}
 
-                <Button
-                  style={{ background: "#98D3DF" }}
+                <button
+                  style={{
+                    backgroundColor: "#67A438",
+                    color: "#fff",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    borderRadius: "10px",
+                    width: "120px",
+                    fontWeight: "bold",
+                    border: "none",
+                    padding: "10px 15px",
+                    fontSize: "1em",
+                  }}
                   className="mb-3"
                   onClick={() =>
                     append({ quantity: undefined, name: "", measure: "" })
                   }
                 >
                   Adicionar
-                </Button>
+                </button>
               </fieldset>
-
+              <p style={{ fontWeight: "bold" }}>Modo de preparo</p>
               <Form.Group className="mb-3" controlId="instructions">
                 <Form.Control
                   as="textarea"
                   rows={5}
-                  placeholder="Modo de preparo"
+                  placeholder="Digite aqui as instruções de preparo"
                   {...register(`instructions` as const)}
                 />
               </Form.Group>
 
-              <Button
-                style={{ background: "#98D3DF" }}
+              <button
+                style={{
+                  backgroundColor: "#67A438",
+                  color: "#fff",
+                  textAlign: "center",
+                  cursor: "pointer",
+                  borderRadius: "10px",
+                  width: "120px",
+                  fontWeight: "bold",
+                  border: "none",
+                  padding: "10px 15px",
+                  fontSize: "1em",
+                }}
                 onClick={handleSubmit(handleFormSubmit)}
               >
                 Cadastrar
-              </Button>
+              </button>
             </Form>
           </main>
         </div>
