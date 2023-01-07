@@ -11,6 +11,7 @@ function Card({ title, cover, id }: Props) {
       <a href={`/receitas/${id}`} style={{ textDecoration: "none" }}>
         <div className="card h-100">
           <img
+            style={{ objectFit: "cover" }}
             src={cover}
             className="card-img-top"
             alt=""
