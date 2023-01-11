@@ -26,6 +26,9 @@ function Login() {
       <Layout>
         <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#67A438" }}>Faça o seu login</h1>
+          <p style={{ textAlign: "center", color: "#aaa" }}>
+            E tenha acesso ao seu caderno de receitas e ao cardápio semanal
+          </p>
           <Form.Group>
             <form
               onSubmit={handleSubmit}

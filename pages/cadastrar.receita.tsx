@@ -126,7 +126,7 @@ function CadastrarReceita() {
               Cadastre sua receita
             </h1>
             <p style={{ textAlign: "center", color: "#aaa" }}>
-              E use-a em seu planejamento semanal
+              E a utilize para montar seu cardápio semanal
             </p>
             <Form className="g-3" ref={formRef}>
               <p style={{ fontWeight: "bold" }}>Título</p>

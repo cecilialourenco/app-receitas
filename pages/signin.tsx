@@ -33,7 +33,7 @@ function Signin() {
         <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#67A438" }}>Cadastre-se</h1>
           <p style={{ color: "#aaa" }}>
-            Crie seu usuário e comece a guardar suas receitas
+            Crie seu usuário e comece a utilizar o Comida Pra Semana
           </p>
           <form
             onSubmit={handleSubmit}
