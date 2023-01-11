@@ -5,10 +5,10 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { Button, Spinner } from "react-bootstrap";
 
 type Props = {
-  search: string;
+  search?: string;
 };
 
-function Cards({ search }: Props) {
+function Cards({ search = "" }: Props) {
   const [recipes, recipesLoading, recipesError] = useCollection(
     collection(db, "Recipes"),
     {}
