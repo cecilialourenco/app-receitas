@@ -36,7 +36,7 @@ function BarraNavegacao() {
         className="nav nav-pills nav-fill mb-4"
         style={{ background: "#EC9131" }}
       >
-        <NavLink href="/lista">Minhas Receitas</NavLink>
+        <NavLink href="/lista">Receitas</NavLink>
         <NavLink href="/cadastrar.receita">Cadastrar Receita</NavLink>
         <NavLink href="/planejamento.semanal">Planejamento Semanal</NavLink>
         <NavLink href="/login">Entrar</NavLink>
