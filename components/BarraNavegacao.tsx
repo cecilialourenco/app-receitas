@@ -1,7 +1,13 @@
+import { useRef } from "react";
 import { Button, Container, Form, Navbar } from "react-bootstrap";
 import NavLink from "./NavLink";
 
 function BarraNavegacao() {
+  const searchRef = useRef<HTMLInputElement>(null);
+  function handleSearch() {
+    const search = searchRef.current?.value;
+    window.location.href = `/lista?search=${search}`;
+  }
   return (
     <>
       <Navbar
@@ -27,8 +33,11 @@ function BarraNavegacao() {
               placeholder="Digite o que você procura:"
               className="me-2"
               aria-label="Search"
+              ref={searchRef}
             />
-            <Button style={{ background: "#98D3DF" }}>Pesquisar</Button>
+            <Button style={{ background: "#98D3DF" }} onClick={handleSearch}>
+              Pesquisar
+            </Button>
           </Form>
         </Container>
       </Navbar>
