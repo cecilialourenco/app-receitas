@@ -1,5 +1,5 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { Nav } from "react-bootstrap";
 
 type Props = {
   href: string;
@@ -12,9 +12,11 @@ function NavLink({ href, children }: Props) {
     backgroundColor: isActive ? "#67A438" : "transparent",
   };
   return (
-    <Nav.Link className="text-white" style={style} href={href}>
-      {children}
-    </Nav.Link>
+    <Link href={href}>
+      <a style={style} className="text-white nav-link">
+        {children}
+      </a>
+    </Link>
   );
 }
 export default NavLink;
