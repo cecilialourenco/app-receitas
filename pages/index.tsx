@@ -1,65 +1,66 @@
-import Head from 'next/head'
-import Image from 'next/image'
-
-import styles from '@/pages/index.module.css'
+import { Image, Navbar } from "react-bootstrap";
+import BrowserTab from "../app/BrowserTab";
+import googleHandler from "../lib/auth";
+import style from "../styles/index.module.css";
 
 export default function Home() {
+  function handleRegister() {
+    window.location.href = "/register.user";
+  }
+  function handleLogin() {
+    window.location.href = "/login";
+  }
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a href="https://vercel.com/new" className={styles.card}>
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <div style={{ margin: "20px 10px auto 20px", textAlign: "center" }}>
+        <BrowserTab />
+        <Navbar.Brand>
+          <Image
+            src="/cook-book.png"
+            alt="logo"
+            height="74px"
+            style={{ marginRight: "10px" }}
+          />
+          <Image
+            src="/comida-pra-semana-high-resolution-logo-color-on-transparent-background (1).png"
+            alt="logo"
+            width={500}
+          />
+        </Navbar.Brand>
+      </div>
+      <div
+        style={{
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          height: "100%",
+          backgroundImage: "url(/colorful-veggies-frame-with-copy-space.webp)",
+          marginTop: "20px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className={style.destaque}>
+          <p>
+            Quer uma ajudinha para salvar suas receitas e poder acessá-las de um
+            jeito prático?
+            <br /> Além disso, você também poderá criar cardápios semanais para
+            dar aquela organizada na sua rotina.
+            <br /> Crie sua conta aqui no Comida Pra Semana e comece a usufruir
+            destas comodidades. <br />
+          </p>
+          <div className="buttons">
+            <button className="button" onClick={googleHandler}>
+              Entrar
+            </button>
+            {/* <button className="button" onClick={handleRegister}>
+              Criar conta
+            </button> */}
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      </div>
     </div>
-  )
-}
+  );
+};

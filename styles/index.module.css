@@ -1,0 +1,13 @@
+.destaque {
+  font-size: 15px;
+  color: #67a438;
+  text-align: center;
+  margin-inline: 5%;
+  margin-block: 20%;
+  max-width: 700px;
+}
+@media (min-width: 768px) {
+  .destaque {
+    font-size: 30px;
+  }
+}

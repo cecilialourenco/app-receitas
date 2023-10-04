@@ -8,9 +8,22 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "bootstrap": "^5.2.2",
+    "firebase": "^9.12.1",
     "next": "latest",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
+    "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-firebase-hooks": "^5.0.3",
+    "react-hook-form": "^7.39.1",
+    "react-icons": "^4.6.0",
+    "react-images-uploading": "^3.1.7",
+    "react-modal": "^3.16.1",
+    "react-toastify": "^9.1.1",
+    "react-weekly-schedule": "^0.0.0-development",
+    "sass": "^1.55.0",
     "server-only": "^0.0.1"
   },
   "devDependencies": {
