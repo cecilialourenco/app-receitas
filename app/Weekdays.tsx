@@ -133,7 +133,7 @@ export default function Weekdays({ dia }: Props) {
           show={showModal}
           onHide={closeModal}
           size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
+          aria-labelledby="contained-modal-title-center"
           centered
         >
           <Modal.Header closeButton>
