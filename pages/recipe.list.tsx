@@ -19,7 +19,7 @@ export default function List() {
             textAlign: "center",
           }}
         >
-          Minhas Receitas
+          Minhas Receitas {search && `com "${search}"`}
         </h1>
         <p style={{ textAlign: "center", color: "#aaa" }}>
           Clique em uma imagem e visualize a receita completa

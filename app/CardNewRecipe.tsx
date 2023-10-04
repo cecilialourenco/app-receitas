@@ -1,22 +1,17 @@
-type Props = {
-  id: string;
-  onClick: (e: any) => void;
-};
-
-export default function Card({ onClick }: Props) {
+export default function CardNewRecipe() {
   return (
     <div className="d-flex">
-      <div
+      <a
         style={{
           width: "250px",
           height: "100%",
           border: "1px solid lightgray",
           position: "relative",
           cursor: "pointer",
+          textDecoration: "none"
         }}
-        onClick={(e) => onClick(e)}
+        href='/register.recipe'
       >
-        
         <img
           style={{ objectFit: "cover", width: "100%", height: "250px" }}
           src="/nova-receita.png"
@@ -35,7 +30,7 @@ export default function Card({ onClick }: Props) {
         >
           Cadastrar nova receita
         </h5>
-      </div>
+      </a>
     </div>
   );
 };

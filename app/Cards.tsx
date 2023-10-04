@@ -29,9 +29,7 @@ export default function Cards({ search = "", onClick }: Props) {
   const removeCard = (id: string) => {
     deleteDoc(doc(db, "Recipes", id));
   };
-  const returnRegisterRecipe = (e: any, id: string) => {
-    window.location.href = `./register.recipe`;
-  };
+  
   let cardList;
   if (recipesLoading) {
     return (
@@ -45,7 +43,7 @@ export default function Cards({ search = "", onClick }: Props) {
   }
   if (recipes) {
     console.log(recipes);
-    const visibleRecipes = recipes.docs.filter((recipe) =>
+    var visibleRecipes = recipes.docs.filter((recipe) =>
       recipe.data().title.toLowerCase().includes(search.toLowerCase())
     );
     cardList = visibleRecipes.map((doc) => {
@@ -64,7 +62,15 @@ export default function Cards({ search = "", onClick }: Props) {
       );
     });
   }
-
+  function shouldShowNewRecipeCard() {
+    if (!search){
+      return true;
+    }
+    if (visibleRecipes.length === 0){
+      return true;
+    }
+    return false;
+  }
   return (
     <div
       style={{
@@ -74,8 +80,7 @@ export default function Cards({ search = "", onClick }: Props) {
         justifyContent: "center",
       }}
     >
-      <CardNewRecipe 
-        onClick= {returnRegisterRecipe}  />
+      {shouldShowNewRecipeCard() && <CardNewRecipe />}
       {cardList}
     </div>
   );
