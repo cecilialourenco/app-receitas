@@ -19,7 +19,8 @@ const diasDaSemana = [
 export default function NavigationBar() {
   const searchRef = useRef<HTMLInputElement>(null);
 
-  function handleSearch() {
+  function handleSearch(e: any) {
+    e.preventDefault();
     const search = searchRef.current?.value;
     window.location.href = `/recipe.list?search=${search}`;
   }
@@ -61,7 +62,7 @@ export default function NavigationBar() {
             
           </Navbar.Brand>
           
-          <Form className="d-flex m-0">
+          <Form className="d-flex m-0" onSubmit={handleSearch}>
             <Form.Control
               type="search"
               placeholder="Digite o que você procura:"
