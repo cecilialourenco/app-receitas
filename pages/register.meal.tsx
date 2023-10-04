@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Image, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -28,7 +28,7 @@ type FormData = {
 
 export default function RegisterRecipe() {
   const formRef = useRef<HTMLFormElement | null>(null);
-  const { register, control, handleSubmit } = useForm<FormData>();
+  const { register, control, handleSubmit, setFocus } = useForm<FormData>();
   const [cover, setCover] = useState<any>([]);
 
   const { fields, append, remove } = useFieldArray({
@@ -42,6 +42,10 @@ export default function RegisterRecipe() {
       measure: "",
     });
   }
+
+  useEffect(() => {
+    setFocus("title");
+  }, [setFocus]);
 
   const convertBase64 = (file: Blob) => {
     return new Promise((resolve, reject) => {
@@ -150,6 +154,7 @@ export default function RegisterRecipe() {
               <p style={{ fontWeight: "bold" }}>Título</p>
               <Form.Group className="mb-3">
                 <input
+                  autoFocus={true}
                   className="form-control"
                   type="text"
                   placeholder="Dê um título para a sua refeição. Exemplos: café da manhã americano; risoto, salada proteica..."
@@ -179,6 +184,7 @@ export default function RegisterRecipe() {
                       key={ingredient.id}
                     >
                       <Form.Control
+                        autoFocus={false}
                         placeholder="Digite o nome do ítem"
                         defaultValue={ingredient.name}
                         className="me-5 p-2 w-75"
