@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Weekdays from "../app/Weekdays";
 import Layout from "../app/Layout";
 
-export default function WeekPlanning() {
+export default function WeeklyPlanning() {
   return (
     <Layout>
       <h1
