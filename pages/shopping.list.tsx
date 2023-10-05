@@ -61,7 +61,7 @@ export default function ShoppingList() {
                       key={ingredient.id}
                     >
                       <Form.Control
-                        placeholder="Digite o nome do ítem"
+                        placeholder="Digite o nome do item"
                         defaultValue={ingredient.name}
                         className="me-5 p-2 w-75"
                         {...register(`ingredients.${index}.name` as const)}

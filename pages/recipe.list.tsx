@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { useRouter } from "next/router";
 import Cards from "../app/Cards";
 import Layout from "../app/Layout";
@@ -7,9 +6,9 @@ export default function List() {
   const router = useRouter();
   const { search } = router.query;
   const returnRecipe = (e: any, id: string) => {
-    window.location.href = `./receitas/${id}`;
+    window.location.href = `./recipes/${id}`;
   };
-  
+
   return (
     <>
       <Layout> 
@@ -22,7 +21,7 @@ export default function List() {
           Minhas Receitas {search && `com "${search}"`}
         </h1>
         <p style={{ textAlign: "center", color: "#aaa" }}>
-          Clique em uma imagem e visualize a receita completa
+          {!search && `Cadastre uma nova receita ou clique em uma já existente para visualizá-la.`}
         </p>
         <div 
           style={{

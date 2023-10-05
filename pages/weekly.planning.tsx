@@ -15,7 +15,7 @@ export default function WeeklyPlanning() {
         Cardápio da Semana
       </h1>
       <p style={{ textAlign: "center", color: "#aaa" }}>
-        Escolha as receitas que vão fazer parte do cardápio da semana
+        Adicione as refeições que vão fazer parte do cardápio da semana
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <Weekdays dia={"Seg"} />

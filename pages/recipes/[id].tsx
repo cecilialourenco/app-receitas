@@ -1,5 +1,3 @@
-/* eslint-disable react/no-children-prop */
-/* eslint-disable react/jsx-key */
 import { doc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
@@ -7,14 +5,14 @@ import Layout from "../../app/Layout";
 import Recipe from "../../app/Recipe";
 import { db } from "../../lib/firebase";
 
-export default function Receita() {
+export default function Recipes() {
   const router = useRouter();
   const { id } = router.query;
 
   if (!id) {
     return <p>loading</p>;
   }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const [recipe, recipeLoading, recipeError] = useDocument(
     doc(db, "Recipes", id as string),
     {}

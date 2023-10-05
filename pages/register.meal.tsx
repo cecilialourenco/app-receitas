@@ -172,7 +172,7 @@ export default function RegisterRecipe() {
               <div className="mb-3 p-2 text-center">
                 <DropzoneWithoutDrag />
               </div>
-              <p style={{ fontWeight: "bold" }}>Ítens</p>
+              <p style={{ fontWeight: "bold" }}>Itens</p>
               <fieldset
                 className="border bg-white mb-3 p-2 "
                 style={{ borderRadius: "5px" }}
@@ -185,7 +185,7 @@ export default function RegisterRecipe() {
                     >
                       <Form.Control
                         autoFocus={false}
-                        placeholder="Digite o nome do ítem"
+                        placeholder="Digite o nome do item"
                         defaultValue={ingredient.name}
                         className="me-5 p-2 w-75"
                         {...register(`ingredients.${index}.name` as const)}

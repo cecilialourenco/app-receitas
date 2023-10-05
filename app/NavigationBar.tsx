@@ -24,7 +24,7 @@ export default function NavigationBar() {
     const search = searchRef.current?.value;
     window.location.href = `/recipe.list?search=${search}`;
   }
-
+  
   function handleLogout() {
     signOut(auth);
     localStorage.removeItem("userId");

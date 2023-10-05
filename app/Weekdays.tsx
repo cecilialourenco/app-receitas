@@ -57,7 +57,7 @@ export default function Weekdays({ dia }: Props) {
   };
 
   const returnRecipe = (id: string) => {
-    window.location.href = `./receitas/${id}`;
+    window.location.href = `./recipes/${id}`;
   };
 
   const handleSave = () => {
@@ -68,7 +68,6 @@ export default function Weekdays({ dia }: Props) {
   let cardsList: React.ReactNode[] = [];
   if (!plansLoading && !recipesLoading) {
     if (!plans || !recipes) return <Spinner />;
-
     plans.docs.forEach((plan) => {
       console.log("loop para o plano", plan.id);
       console.log({ recipes });
