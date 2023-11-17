@@ -7,10 +7,11 @@ type Props = {
   onClick?: () => void;
 };
 
-export default function NavLink({ href, children, onClick }: Props) {
+export default function NavLinks({ href, children, onClick }: Props) {
   const isActive = href === useRouter().pathname;
   const style = {
     backgroundColor: isActive ? "#67A438" : "transparent",
+    width: "100%",
   };
   return (
     <Link href={href} style={style} onClick={onClick} className="text-white nav-link">
