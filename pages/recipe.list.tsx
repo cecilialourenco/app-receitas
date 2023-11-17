@@ -8,7 +8,12 @@ export default function List() {
   const returnRecipe = (e: any, id: string) => {
     window.location.href = `./recipes/${id}`;
   };
-
+  function shouldShowMessage() {
+    if (search){
+      return false;
+    }
+    return true;
+  }
   return (
     <>
       <Layout> 
@@ -22,6 +27,7 @@ export default function List() {
         </h1>
         <p style={{ textAlign: "center", color: "#aaa" }}>
           {!search && `Cadastre uma nova receita ou clique em uma já existente para visualizá-la.`}
+          {shouldShowMessage() && `Sua pesquisa não encontrou resultado.`}
         </p>
         <div 
           style={{
