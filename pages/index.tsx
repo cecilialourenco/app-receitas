@@ -19,11 +19,13 @@ export default function Home() {
             src="/cook-book.png"
             alt="logo"
             height="74px"
+            className='logoImage'
             style={{ marginRight: "10px" }}
           />
           <Image
             src="/comida-pra-semana-high-resolution-logo-color-on-transparent-background (1).png"
             alt="logo"
+            className='logoTitle'
             width={500}
           />
         </Navbar.Brand>
