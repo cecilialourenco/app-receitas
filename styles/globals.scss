@@ -4,10 +4,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-body {
-  background: #f6fcff !important;
+  min-width: 400px;
+   background: #f6fcff !important;
 }
 
 a {
@@ -17,16 +15,6 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }
 
 input::placeholder,
@@ -106,7 +94,7 @@ textarea {
   background-color: #0f730c !important;
   color: #fff;
 }
-@media (min-width: 768px) {
+@media (min-width: 976px) {
   .button {
     font-size: 20px;
     width: 160px;
