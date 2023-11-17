@@ -14,7 +14,7 @@ export default function Footer() {
       <h5>Seu caderno de receitas online!</h5>
       <h5>Cadastre suas receitas e monte o seu cardápio semanal.</h5>
       <br />
-      <p>Comida Pra Semana &copy; 2022</p>
+      <p>Comida Pra Semana &copy; 2023</p>
     </footer>
   );
 };
