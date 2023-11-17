@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { auth } from "../lib/firebase";
 import BrowserTab from "./BrowserTab";
 import NavigationBar from "./NavigationBar";
+import Footer from './Footer';
 
 type Props = {
   children: React.ReactNode;
@@ -32,6 +33,7 @@ export default function Layout({ children }: Props) {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };
