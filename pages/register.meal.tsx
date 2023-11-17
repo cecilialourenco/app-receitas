@@ -26,7 +26,7 @@ type FormData = {
   instructions: string;
 };
 
-export default function RegisterRecipe() {
+export default function RegisterMeal() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const { register, control, handleSubmit, setFocus } = useForm<FormData>();
   const [cover, setCover] = useState<any>([]);
