@@ -1,8 +1,10 @@
 import { signOut } from "firebase/auth";
-import { useRef } from "react";
-import { Button, Container, Form, Navbar } from "react-bootstrap";
+import { useRef, useState } from "react";
+import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import { auth } from "../lib/firebase";
-import NavLink from "./NavLink";
+import NavLinks from "./NavLinks";
+import style from "../styles/home.module.scss"; 
+import "./NavigationBar.scss";
 
 const data = Date.now();
 const hoje = new Date(data);
@@ -19,6 +21,8 @@ const diasDaSemana = [
 export default function NavigationBar() {
   const searchRef = useRef<HTMLInputElement>(null);
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  
   function handleSearch(e: any) {
     e.preventDefault();
     const search = searchRef.current?.value;
@@ -32,78 +36,120 @@ export default function NavigationBar() {
   }
   return (
     <>
-      <Navbar
-        style={{
-          background: "white",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Container fluid>
-          <p style={{
-            fontSize: "20px",
-            color: "#67a438",
-            marginTop: "20px"
-            }}>
+      <Container fluid>
+        <Navbar
+          className={style.navbar}>
+          <p
+            className={style.calendar}>
             {`${diasDaSemana[hoje.getDay()]}, ${hoje.toLocaleDateString('pt-BR')}`}
           </p>
           <Navbar.Brand href="/recipe.list">
             <img
               src="/cook-book.png"
               alt="logo"
-              height="74px"
-              style={{ marginRight: "10px" }}
-            />
+              className={style.logoImage} />
             <img
               src="/comida-pra-semana-high-resolution-logo-color-on-transparent-background (1).png"
               alt="logo"
-              width={500}
-            />
-            
+              className={style.logoTitle} />
           </Navbar.Brand>
-          
-          <Form className="d-flex m-0" onSubmit={handleSearch}>
+          <button className={style.hamburger} onClick={() => setIsNavOpen((prev) => !prev)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 animate-pulse absolute end-5 top-10"
+              aria-hidden="true" 
+              viewBox="0 0 17 17"
+              fill="none"
+            >
+              <path
+                stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+          <Form className={style.search} onSubmit={handleSearch}>
             <Form.Control
               type="search"
               placeholder="Digite o que você procura:"
               className="me-2"
               aria-label="Search"
-              ref={searchRef}
-            />
+              ref={searchRef} />
             <Button
-              className="button"
-              style={{
-                fontSize: "20px",
-                fontWeight: "bold",
-                backgroundColor: "#67a438",
-                border: "none",
-                borderRadius: "7px",
-                color: "#fff",
-                padding: "1px 3px",
-                display: "inline-block",
-                textAlign: "center",
-                textDecoration: "none",
-                width: "160px",
-              }}
+              className={style.button}
               onClick={handleSearch}
             >
               Pesquisar
             </Button>
           </Form>
-        </Container>
-      </Navbar>
-      <nav
-        className="nav nav-pills nav-fill mb-4"
-        style={{ background: "#EC9131", fontWeight: "bold", fontSize: "20px" }}
-      >
-        <NavLink href="/recipe.list">Receitas</NavLink>
-      <NavLink href="/register.meal">Cadastrar Refeição</NavLink>
-        <NavLink href="/weekly.planning">Planejamento Semanal</NavLink>
-        <NavLink href="/shopping.list">Lista de Compras</NavLink>
-        <NavLink href="/" onClick={handleLogout}>
-          Sair
-        </NavLink>
-      </nav>
+        </Navbar>
+        
+        <Nav>
+          <section style={{width: "100%"}}>
+          <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
+            <div
+              onClick={() => setIsNavOpen(false)}
+              style={{backgroundColor: "white", textAlign: "end"}}
+            >
+              <svg
+                className={style.x}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </div>
+            
+            <ul onClick={() => setIsNavOpen(false)} className={style.showMenuNav}>
+              <li>
+                <a href="/recipe.list">Receitas</a>
+              </li>
+              <li>
+                <a href="/register.meal">Cadastrar Refeição</a>
+              </li>
+              <li>
+                <a href="/weekly.planning">Planejamento Semanal</a>
+              </li>
+              <li>
+                <a href="/shopping.list">Lista de Compras</a>
+              </li>
+              <li>
+                <a href="/" onClick={handleLogout}>Sair</a>
+              </li>
+            </ul>
+          </div> 
+        </section> 
+        <div className='nav-elements'>
+          <ul>
+              <li>
+                <NavLinks href="/recipe.list">Receitas</NavLinks>
+              </li>
+              <li>
+                <NavLinks href="/register.meal">Cadastrar Refeição</NavLinks>
+              </li>
+              <li>
+                <NavLinks href="/weekly.planning">Planejamento Semanal</NavLinks>
+              </li>
+              <li>
+                <NavLinks href="/shopping.list">Lista de Compras</NavLinks>
+              </li>
+              <li>
+                <NavLinks href="/" onClick={handleLogout}>Sair</NavLinks>
+              </li>
+            </ul>
+          </div>
+        </Nav>
+        <style>
+          {`
+            .hideMenuNav {
+              display: none;
+            }
+          `}
+        </style>
+      </Container>
     </>
   );
 };
