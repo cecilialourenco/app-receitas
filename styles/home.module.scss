@@ -25,6 +25,7 @@
 .logoImage {
   height: 74px;
   margin-right: 10px;
+  max-width: 60%;
 }
 @media (max-width: 960px) {
   .logoImage {
@@ -34,10 +35,11 @@
 
 .logoTitle {
   width: 500px;
+  max-width: 80%;
 }
 @media (max-width: 960px) {
   .logoTitle {
-    width: 285px;
+    width: 295px;
   }
 }
 .search {
@@ -82,6 +84,7 @@
   text-transform: uppercase;
   padding-left: 0;
   margin-bottom: 0;
+  z-index: 10;
 }
 
 .showMenuNav li{
