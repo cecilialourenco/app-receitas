@@ -36,7 +36,7 @@ export default function NavigationBar() {
   }
   return (
     <>
-      <Container fluid>
+      {/* <Container> */}
         <Navbar
           className={style.navbar}>
           <p
@@ -149,7 +149,7 @@ export default function NavigationBar() {
             }
           `}
         </style>
-      </Container>
+      {/* </Container> */}
     </>
   );
 };
