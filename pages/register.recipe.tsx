@@ -113,7 +113,7 @@ export default function RegisterRecipe() {
             />
           </span>
           <p style={{ fontWeight: "bold" }}>
-            Escolha uma foto para a sua receita
+            Escolha uma foto para a sua refeição (opcional)
           </p>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default function RegisterRecipe() {
 
   async function handleFormSubmit(recipeData: FormData) {
     const userId = localStorage.getItem("userId");
-    const imageData = await convertBase64(cover[0]);
+    const imageData = cover.length > 0 ? await convertBase64(cover[0]) : null;
     const newRecipe = { ...recipeData, cover: imageData, userId };
     console.log(newRecipe);
     addDoc(collection(db, "Recipes"), newRecipe).then(() => {
@@ -140,7 +140,7 @@ export default function RegisterRecipe() {
                 textAlign: "center",
               }}
             >
-              Cadastre sua receita
+              Cadastre sua refeição
             </h1>
             <p style={{ textAlign: "center", color: "#aaa" }}>
               E a utilize para montar seu cardápio semanal
@@ -152,16 +152,8 @@ export default function RegisterRecipe() {
                   autoFocus
                   className="form-control"
                   type="text"
-                  placeholder="Digite o título da receita"
+                placeholder="Digite o título da refeição"
                   {...register(`title` as const)}
-                />
-              </Form.Group>
-              <p style={{ fontWeight: "bold" }}>Categoria</p>
-              <Form.Group className="mb-3">
-                <Form.Control
-                  type="text"
-                  placeholder="Digite a categoria (Exemplos: dieta, final de semana, lanche, sobremesa...)"
-                  {...register(`category` as const)}
                 />
               </Form.Group>
               <div className="mb-3 p-2 text-center">
@@ -214,6 +206,7 @@ export default function RegisterRecipe() {
                           <option value={"ml"}>mililitros</option>
                           <option value={"g"}>gramas</option>
                           <option value={"unidade(s)"}>unidade(s)</option>
+                          <option value={"pitada(s)"}>pitada(s)</option>
                         </Form.Select>
                       </InputGroup>
 
@@ -244,7 +237,7 @@ export default function RegisterRecipe() {
                 <Form.Control
                   as="textarea"
                   rows={5}
-                  placeholder="Digite aqui as instruções de preparo"
+                  placeholder="Digite aqui as instruções de preparo (opcional)"
                   {...register(`instructions` as const)}
                 />
               </Form.Group>

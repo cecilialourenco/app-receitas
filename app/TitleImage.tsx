@@ -1,7 +1,7 @@
 import WhiteArea from "./WhiteArea";
 
 type Props = {
-  cover: string;
+  cover?: string;
   title: string;
 };
 

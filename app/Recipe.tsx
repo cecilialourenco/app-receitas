@@ -5,7 +5,7 @@ import TitleImage from "./TitleImage";
 
 type Props = {
   title: string;
-  cover: string;
+  cover?: string;
   id: string;
   instructions: string;
   ingredients: Ingredient[];
@@ -17,6 +17,12 @@ export default function Recipe({ title, cover, instructions, ingredients }: Prop
       <TitleImage cover={cover} title={title} />
       <IngredientsList ingredients={ingredients} />
       <Directions instructions={instructions} />
+      <button
+        className="button"
+      >
+        Editar receita
+      </button>
     </div>
+    
   );
 };
