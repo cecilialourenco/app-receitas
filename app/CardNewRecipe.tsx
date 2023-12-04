@@ -28,7 +28,7 @@ export default function CardNewRecipe() {
             textAlign: "center",
           }}
         >
-          Cadastrar nova receita
+          Cadastrar nova comidinha 
         </h5>
       </a>
     </div>

@@ -36,120 +36,112 @@ export default function NavigationBar() {
   }
   return (
     <>
-      {/* <Container> */}
-        <Navbar
-          className={style.navbar}>
-          <p
-            className={style.calendar}>
-            {`${diasDaSemana[hoje.getDay()]}, ${hoje.toLocaleDateString('pt-BR')}`}
-          </p>
-          <Navbar.Brand href="/recipe.list">
-            <img
-              src="/cook-book.png"
-              alt="logo"
-              className={style.logoImage} />
-            <img
-              src="/comida-pra-semana-high-resolution-logo-color-on-transparent-background (1).png"
-              alt="logo"
-              className={style.logoTitle} />
-          </Navbar.Brand>
-          <button className={style.hamburger} onClick={() => setIsNavOpen((prev) => !prev)}>
+      <Navbar
+        className={style.navbar}>
+        <p
+          className={style.calendar}>
+          {`${diasDaSemana[hoje.getDay()]}, ${hoje.toLocaleDateString('pt-BR')}`}
+        </p>
+        <Navbar.Brand href="/recipe.list">
+          <img
+            src="/cook-book.png"
+            alt="logo"
+            className={style.logoImage} />
+          <img
+            src="/comida-pra-semana-high-resolution-logo-color-on-transparent-background (1).png"
+            alt="logo"
+            className={style.logoTitle} />
+        </Navbar.Brand>
+        <button className={style.hamburger} onClick={() => setIsNavOpen((prev) => !prev)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 animate-pulse absolute end-5 top-10"
+            aria-hidden="true" 
+            viewBox="0 0 17 17"
+            fill="none"
+          >
+            <path
+              stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <Form className={style.search} onSubmit={handleSearch}>
+          <Form.Control
+            type="search"
+            placeholder="Digite o que você procura:"
+            className="me-2"
+            aria-label="Search"
+            ref={searchRef} />
+          <Button
+            className={style.button}
+            onClick={handleSearch}
+          >
+            Pesquisar
+          </Button>
+        </Form>
+      </Navbar>
+      
+      <Nav>
+        <section style={{width: "100%"}}>
+        <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
+          <div
+            onClick={() => setIsNavOpen(false)}
+            style={{backgroundColor: "white", textAlign: "end"}}
+          >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 animate-pulse absolute end-5 top-10"
-              aria-hidden="true" 
-              viewBox="0 0 17 17"
+              className={style.x}
+              viewBox="0 0 24 24"
               fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"
-              />
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
-          </button>
-          <Form className={style.search} onSubmit={handleSearch}>
-            <Form.Control
-              type="search"
-              placeholder="Digite o que você procura:"
-              className="me-2"
-              aria-label="Search"
-              ref={searchRef} />
-            <Button
-              className={style.button}
-              onClick={handleSearch}
-            >
-              Pesquisar
-            </Button>
-          </Form>
-        </Navbar>
-        
-        <Nav>
-          <section style={{width: "100%"}}>
-          <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
-            <div
-              onClick={() => setIsNavOpen(false)}
-              style={{backgroundColor: "white", textAlign: "end"}}
-            >
-              <svg
-                className={style.x}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </div>
-            
-            <ul onClick={() => setIsNavOpen(false)} className={style.showMenuNav}>
-              <li>
-                <a href="/recipe.list">Receitas</a>
-              </li>
-              <li>
-                <a href="/register.meal">Cadastrar Refeição</a>
-              </li>
-              <li>
-                <a href="/weekly.planning">Planejamento Semanal</a>
-              </li>
-              <li>
-                <a href="/shopping.list">Lista de Compras</a>
-              </li>
-              <li>
-                <a href="/" onClick={handleLogout}>Sair</a>
-              </li>
-            </ul>
-          </div> 
-        </section> 
-        <div className='nav-elements'>
-          <ul>
-              <li>
-                <NavLinks href="/recipe.list">Receitas</NavLinks>
-              </li>
-              <li>
-                <NavLinks href="/register.meal">Cadastrar Refeição</NavLinks>
-              </li>
-              <li>
-                <NavLinks href="/weekly.planning">Planejamento Semanal</NavLinks>
-              </li>
-              <li>
-                <NavLinks href="/shopping.list">Lista de Compras</NavLinks>
-              </li>
-              <li>
-                <NavLinks href="/" onClick={handleLogout}>Sair</NavLinks>
-              </li>
-            </ul>
           </div>
-        </Nav>
-        <style>
-          {`
-            .hideMenuNav {
-              display: none;
-            }
-          `}
-        </style>
-      {/* </Container> */}
+          
+          <ul onClick={() => setIsNavOpen(false)} className={style.showMenuNav}>
+            <li>
+              <a href="/recipe.list">Comidinhas</a>
+            </li>
+            <li>
+              <a href="/weekly.planning">Planejamento Semanal</a>
+            </li>
+            <li>
+              <a href="/shopping.list">Lista de Compras</a>
+            </li>
+            <li>
+              <a href="/" onClick={handleLogout}>Sair</a>
+            </li>
+          </ul>
+        </div> 
+      </section> 
+      <div className='nav-elements'>
+        <ul>
+            <li>
+              <NavLinks href="/recipe.list">Comidinhas</NavLinks>
+            </li>
+            <li>
+              <NavLinks href="/weekly.planning">Planejamento Semanal</NavLinks>
+            </li>
+            <li>
+              <NavLinks href="/shopping.list">Lista de Compras</NavLinks>
+            </li>
+            <li>
+              <NavLinks href="/" onClick={handleLogout}>Sair</NavLinks>
+            </li>
+          </ul>
+        </div>
+      </Nav>
+      <style>
+        {`
+          .hideMenuNav {
+            display: none;
+          }
+        `}
+      </style>
     </>
   );
 };

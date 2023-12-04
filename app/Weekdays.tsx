@@ -136,12 +136,12 @@ export default function Weekdays({ dia }: Props) {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>Receitas</Modal.Title>
+            <Modal.Title>Comidinhas</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Control
               type="search"
-              placeholder="Digite o que você procura:"
+              placeholder="Busque sua comidinha:"
               className="mb-3"
               aria-label="Search"
               value={searchText}
