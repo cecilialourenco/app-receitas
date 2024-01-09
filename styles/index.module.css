@@ -11,3 +11,14 @@
     font-size: 30px;
   }
 }
+@media (max-width: 960px) {
+  .logoTitle {
+    width: 295px;
+  }
+}
+
+@media (max-width: 960px) {
+  .logoImage {
+    height: 34px;
+  }
+}
