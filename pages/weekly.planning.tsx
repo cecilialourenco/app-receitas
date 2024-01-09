@@ -4,6 +4,23 @@ import Weekdays from "../app/Weekdays";
 import Layout from "../app/Layout";
 
 export default function WeeklyPlanning() {
+  const [checkedMeals, setCheckedMeals] = useState<any[]>([]);
+  console.log(checkedMeals); 
+  function checados() {
+    if (typeof document !== 'undefined') {
+      const checkboxes: NodeListOf<HTMLInputElement> | null = document.querySelectorAll('input[type="checkbox"]:checked');
+      const checkeds = Array.from(checkboxes).map( elemento => {
+        if(elemento.labels) {
+          return elemento.labels[0].textContent;
+        }
+      });
+      setCheckedMeals(checkeds);
+      
+    }
+   
+  }
+  
+  
   return (
     <Layout>
       <h1
@@ -18,43 +35,42 @@ export default function WeeklyPlanning() {
         Adicione as comidinhas que vão fazer parte do cardápio da semana
       </p>
       
-      
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <div style={{fontSize: "20px", color:  "#67A438"}}>Selecione as categorias de refeições do seu dia a dia:</div>
         <div 
           className="btn-group" 
           role="group" aria-label="Basic checkbox toggle button group">
-        <input type="checkbox" className="btn-check" id="btnCheck1" autoComplete="off"/>
+        <input type="checkbox" className="btn-check" id="btnCheck1" autoComplete="off" onClick={checados}/>
         <label 
           className="btn btn-outline-primary" 
           htmlFor="btnCheck1"
         >CAFÉ DA MANHÃ</label>
 
-        <input type="checkbox" className="btn-check" id="btnCheck2" autoComplete="off"/>
+        <input type="checkbox" className="btn-check" id="btnCheck2" autoComplete="off" onClick={checados}/>
         <label 
           className="btn btn-outline-primary" 
           htmlFor="btnCheck2"
         >COLAÇÃO</label>
 
-        <input type="checkbox" className="btn-check" id="btnCheck3" autoComplete="off"/>
+        <input type="checkbox" className="btn-check" id="btnCheck3" autoComplete="off" onClick={checados}/>
         <label 
           className="btn btn-outline-primary" 
           htmlFor="btnCheck3"
         >ALMOÇO</label>
 
-        <input type="checkbox" className="btn-check" id="btnCheck4" autoComplete="off"/>
+        <input type="checkbox" className="btn-check" id="btnCheck4" autoComplete="off" onClick={checados}/>
         <label 
           className="btn btn-outline-primary" 
           htmlFor="btnCheck4"
         >LANCHE</label>
 
-        <input type="checkbox" className="btn-check" id="btnCheck5" autoComplete="off"/>
+        <input type="checkbox" className="btn-check" id="btnCheck5" autoComplete="off" onClick={checados}/>
         <label 
           className="btn btn-outline-primary" 
           htmlFor="btnCheck5"
         >JANTAR</label>
 
-        <input type="checkbox" className="btn-check" id="btnCheck6" autoComplete="off"/>
+        <input type="checkbox" className="btn-check" id="btnCheck6" autoComplete="off" onClick={checados}/>
         <label 
           className="btn btn-outline-primary" 
           htmlFor="btnCheck6"
