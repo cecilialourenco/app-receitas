@@ -8,6 +8,7 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.29",
     "bootstrap": "^5.2.2",
     "firebase": "^9.12.1",
     "next": "latest",
